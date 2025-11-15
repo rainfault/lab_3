@@ -11,11 +11,14 @@
       Помести свой файл сцены в эту же папку и назови его scene.glb
       или измени путь в атрибуте src у a-asset-item.
     -->
-    <a-scene background="color: #ECECEC">
-      <a-assets>
-        <a-asset-item id="sceneModel" src="scene.glb"></a-asset-item>
-      </a-assets>
+    <a-assets>
+         <a-asset-item id="sceneModel" src="zakhar_fun_scene.glb"></a-asset-item>
+    </a-assets>
 
+    <a-entity gltf-model="#sceneModel"
+          position="0 0 -5"
+          scale="1 1 1">  
+    </a-entity>
       <!-- Камера с управлением мышью/тачем -->
       <a-entity 
         id="cameraRig"
