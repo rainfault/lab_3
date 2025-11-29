@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>3D Model in A-Frame</title>
+    <title>3D Model in A-Frame (AR)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- AR.js для A-Frame -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
-  <body>
-    <a-scene>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
       <a-assets>
+        <!-- Тот же файл модели, что и в твоём варианте -->
         <a-asset-item id="model" src="zakhar_text_scene_fixedZ.glb"></a-asset-item>
       </a-assets>
-      
-      <a-entity gltf-model="#model" position="0 0 -5" rotation="0 0 0"></a-entity>
-      
-      <a-camera position="0 1.6 0"></a-camera>
+
+      <!-- Привязка к маркеру Hiro -->
+      <a-marker preset="hiro">
+        <a-entity
+          gltf-model="#model"
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.3 0.3 0.3"
+        ></a-entity>
+      </a-marker>
+
+      <!-- Камера AR -->
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
